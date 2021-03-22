@@ -1,0 +1,28 @@
+<div>
+  <?php if (count($flash) > 0) : ?>
+    <?php foreach ($flash as $messages) : ?>
+      <?php foreach ($messages as $message) :?>
+        <li><?= $message ?></li>
+      <?php endforeach ?>
+    <?php endforeach ?>
+  <?php endif ?>
+</div>
+
+<a href='/posts?page=<?= $page - 1 ?>'>Previous</a>
+<a href='/posts?page=<?= $page + 1 ?>'>Next</a>
+</Br>
+<a href='/posts/new'>New post</a>
+
+<table>
+  <?php foreach ($posts as $post) : ?>
+    <tr>
+      <td>
+        <a href='/posts/<?= htmlspecialchars($post['slug']) ?>'>
+          <?= htmlspecialchars($post['name']) ?>
+        </a>
+      </td>
+    </tr>
+  <?php endforeach ?>
+</table>
+
+<td>Page:<?= $page ?></td>

@@ -1,0 +1,23 @@
+<h1>New posts</h1>
+
+<form action='/posts' method='post'>
+  <div>
+    Name
+    <label>
+      <input type='text' name='post[name]' value=<?= htmlspecialchars($post['name']) ?>>
+      <?php if (isset($errors['name'])) : ?>
+        <div><?= $errors['name'] ?></div>
+      <?php endif ?>
+    </label>  
+  </div>
+  <div>
+    Body
+    <label>
+      <textarea name='post[body]'><?= htmlspecialchars($post['body']) ?></textarea>
+        <?php if (isset($errors['body'])) : ?>
+          <div><?= $errors['body'] ?></div>
+        <?php endif ?>
+    </label>  
+  </div>
+  <input type='submit' value='Sign Up'>
+</form>
