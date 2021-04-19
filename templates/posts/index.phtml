@@ -17,12 +17,27 @@
   <?php foreach ($posts as $post) : ?>
     <tr>
       <td>
-        <a href='/posts/<?= htmlspecialchars($post['slug']) ?>'>
+        <a href='/posts/<?= htmlspecialchars($post['id']) ?>'>
           <?= htmlspecialchars($post['name']) ?>
         </a>
+        <form action="/posts/<?= htmlspecialchars($post['id'])?>" method='post'>
+          <input type="hidden" name="_METHOD" value="DELETE">
+          <input type='submit' value='Delete'>
+        </form>
       </td>
     </tr>
   <?php endforeach ?>
 </table>
 
 <td>Page:<?= $page ?></td>
+
+
+<?php foreach ($posts as $post): ?>
+  <div>
+    <?= htmlspecialchars($post['name']) ?>
+    <form action="/posts/<?= $post['id'] ?>" method="post">
+      <input type="hidden" name="_METHOD" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+  </div>
+<?php endforeach ?>

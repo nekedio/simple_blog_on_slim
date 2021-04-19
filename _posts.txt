@@ -1,0 +1,18 @@
+{"name":"Slim 4.4.0 released","body":" Jan 04, 2020\r\nSlim 4.4.0 released\r\n\r\nWe are excited to announce the Slim 4.4.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.\r\n","id":"6077069f61010"}
+{"name":"Slim 3.12.3 released","body":" Nov 28, 2019\r\nSlim 3.12.3 released\r\n\r\nWe are excited to announce the Slim 3.12.3 release.\r\n","id":"6077068267e5c"}
+{"name":"Slim 4.3.0 released","body":" Oct 05, 2019\r\nSlim 4.3.0 released\r\n\r\nWe are excited to announce the Slim 4.3.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.\r\nWe are excited to announce the Slim 4.3.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.\r\nWe are excited to announce the Slim 4.3.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.","id":"6077060a6851d"}
+{"name":"Slim 4.2.0 released","body":" Aug 20, 2019\r\nSlim 4.2.0 released\r\n\r\nWe are excited to announce the Slim 4.2.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.\r\n","id":"607705f929e35"}
+{"name":"Slim 4.2.0 released","body":" Aug 20, 2019\r\nSlim 4.2.0 released\r\n\r\nWe are excited to announce the Slim 4.2.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.\r\n","id":"607705d374c90"}
+{"name":"Slim 3.12.2 released","body":" Aug 20, 2019\r\nSlim 3.12.2 released\r\n\r\nThis is the last release for Slim 3. Minor bug fixes and improvements.\r\n\r\nThe full list of changes is here","id":"607705b565c8d"}
+{"name":"Slim 4.1.0 released","body":" Aug 06, 2019\r\nSlim 4.1.0 released\r\n\r\nWe are excited to announce the Slim 4.1.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.\r\nChangelog\r\nAdded\r\n\r\n    #2779 Add support for Slim callables Class:method resolution & Container Closure auto-binding in MiddlewareDispatcher\r\n    #2774 Add possibility for custom RequestHandler invocation strategies\r\n\r\nFixed\r\n\r\n    #2776 Fix group middleware on multiple nested groups\r\n\r\nUnaddressed BC Break From 4.0.0\r\n\r\n    #2777 - Routes can no longer return null\r\n","id":"607705982908d"}
+{"name":"Slim 4.0.0 released","body":"Aug 01, 2019\r\nSlim 4.0.0 released\r\n\r\nWe are excited to announce the Slim 4.0.0 release. Please direct all your feedback for this release to the Slim 4 Release Feedback Thread. The new docs are located here.","id":"6077056d996d6"}
+{"name":"aefeasrasrggrwwwwwwwwwwwwwwwwwwwwwwwg","body":"aefaerwgrgwwwwwwwwwwwwwwwwwwwwwwwwwwwgr","id":"6075db2494ced"}
+{"name":"neked 111odinodin","body":"ollolollollool llollsGSR\r\narar\r\nahrhrewhr","id":"6075d9a0aef8b"}
+{"name":"00","body":"00000000000","id":"60746b1d71675"}
+{"name":"00","body":"00000000000","id":"60746addd3792"}
+{"name":"00000111","body":"00000000000","id":"60746acda8f10"}
+{"name":"1","body":"11111111111111111111111111111111111111111","id":"607469a98ae1a"}
+{"name":"11","body":"11111111111111111111111111111111111111111","id":"607469462d48d"}
+{"name":"22","body":"22222222222222222222222222222222222222222222222222222222","id":"607468b426b64"}
+{"name":"2222","body":"22222222222222222222222222222222222222222222222222222222","id":"607468ac852e6"}
+{"name":"1111","body":"11111111111111111111111111111111111111111","id":"607468a372aa3"}

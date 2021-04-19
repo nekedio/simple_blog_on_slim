@@ -4,6 +4,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use DI\Container;
+use Slim\Middleware\MethodOverrideMiddleware;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -13,6 +14,7 @@ $container->set('renderer', function () {
 });
 
 $app = AppFactory::createFromContainer($container);
+$app->add(MethodOverrideMiddleware::class);
 $app->addErrorMiddleware(true, true, true);
 
 $repo = new App\PostRepository();
@@ -23,9 +25,7 @@ $container->set('flash', function () {
     return new Slim\Flash\Messages();
 });
 
-$app->get('/', function (Request $request, Response $response, array $args) use ($repo) {
-    $validator = new App\Validator();
-    print_r($validator->validate(['name' => '', 'body' => '']));
+$app->get('/', function (Request $request, Response $response, array $args) {
     return $this->get('renderer')->render($response, 'index.phtml');
 });
 
@@ -37,7 +37,7 @@ $app->get('/posts/new', function (Request $request, Response $response, array $a
     return $this->get('renderer')->render($response, 'posts/new.phtml', $params);
 })->setName('posts/new');
 
-$app->post('/posts', function (Request $request, Response $response, array $args) use ($router) {
+$app->post('/posts', function (Request $request, Response $response, array $args) use ($router, $repo) {
     $post = $request->getParsedBodyParam('post');
     $validator = new App\Validator();
     $errors = $validator->validate($post);
@@ -48,6 +48,7 @@ $app->post('/posts', function (Request $request, Response $response, array $args
         ];
         return $this->get('renderer')->render($response->withStatus(422), 'posts/new.phtml', $params);
     }
+    $repo->save($post);
     $this->get('flash')->addMessage('success', 'Post has been created');
     return $response->withRedirect($router->urlFor('posts'));
 });
@@ -73,11 +74,10 @@ $app->get('/posts', function (Request $request, Response $response, array $args)
     return $this->get('renderer')->render($response, 'posts/index.phtml', $params);
 })->setName('posts');
 
-
-$app->get('/posts/{slug}', function (Request $request, Response $response, array $args) use ($repo) {
-    $slug = $args['slug'];
+$app->get('/posts/{id}', function (Request $request, Response $response, array $args) use ($repo) {
+    $id = $args['id'];
     $posts = $repo->all();
-    $post = collect($posts)->firstWhere('slug', $slug);
+    $post = collect($posts)->firstWhere('id', $id);
 
         if (!$post) {
         return $response->withStatus(404)->write('Page not found');
@@ -89,5 +89,43 @@ $app->get('/posts/{slug}', function (Request $request, Response $response, array
     return $this->get('renderer')->render($response, 'posts/show.phtml', $params);
 })->setName('post');
 
+$app->get('/posts/{id}/edit', function (Request $request, Response $response, array $args) use ($repo) {
+    $id = $args['id'];
+    $post = $repo->find($id);
+    
+    $params = [
+        'post' => $post,
+        'errors' => []
+    ];
+     
+    return $this->get('renderer')->render($response, 'posts/edit.phtml', $params);
+});
+
+$app->patch('/posts/{id}', function (Request $request, Response $response, array $args) use ($router, $repo) {
+    $id = $args['id'];
+    $data = $request->getParsedBodyParam('post');
+    $data['id'] = $id;
+    $validator = new App\Validator();
+    $errors = $validator->validate($data);
+    if (count($errors)) {
+        $params = [
+            'post' => $data,
+            'errors' => $errors
+        ];
+        $response = $response->withStatus(422);
+        return $this->get('renderer')->render($response, 'posts/edit.phtml', $params);
+    }
+    
+    $repo->save($data);
+    $this->get('flash')->addMessage('success', 'Post has been updated');
+    return $response->withRedirect($router->urlFor('posts'));
+});
+
+$app->delete('/posts/{id}', function ($request, $response, array $args) use ($repo, $router) {
+    $id = $args['id'];
+    $repo->destroy($id);
+    $this->get('flash')->addMessage('success', 'Post has been removed');
+    return $response->withRedirect($router->urlFor('posts'));
+});
 
 $app->run();

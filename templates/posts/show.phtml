@@ -1,3 +1,6 @@
-<a href="/posts">Посты</a>
+<a href="/posts">Posts</a>
+<a href="<?= htmlspecialchars($post['id']) ?>/edit">Edit</a>
+<a href="<?= htmlspecialchars($post['id']) ?>/delete">Delete</a>
+
 <h2><?= $post['name'] ?></h2>
 <div><?= $post['body'] ?></div>
